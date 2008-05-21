@@ -1,0 +1,113 @@
+<?php
+// $Id: jquery_ui.module,v 1.1 2008/05/21 05:14:51 webchick Exp $
+
+/**
+ * @file
+ * Provides the jQuery UI plug-in to other Drupal modules.
+ *
+ * This module doesn't do too much, but it is a central location for any other
+ * modules that implement the JQuery UI library. It ensures that multiple
+ * modules will all include the same library script just once on any given page.
+ */
+ 
+/**
+ * Add JQuery interface library to this page.
+ *
+ * @param $files
+ *   An array of what additional files (other than UI core) should be loaded
+ *   on the page.
+ * @param $type
+ *   Compression type: leave empty to use admin setting.
+ *   Possible values: 'minified', 'packed', 'none'
+ */
+function jquery_ui_add($files = array(), $type = NULL) {
+  static $loaded_files, $ui_core, $effects_core;
+  $jquery_ui_path = drupal_get_path('module', 'jquery_ui') . '/jquery.ui';
+
+  // If a type wasn't specified, then default to whatever was specified in the
+  // settings page.
+  if (is_null($type)) {
+    $type = variable_get('jquery_ui_compression_type', 'minified');
+  }
+
+  // If core hasn't been added yet, add it.
+  if (!isset($ui_core)) {
+    $ui_core = TRUE;
+    jquery_ui_add(array('ui.core'));
+  }
+
+  // Loop through list of files to include and add them to the page.
+  foreach ($files as $file) {
+    // Any effects files require the effects core file.
+    if (!isset($effects_core) && strpos($file, 'effects.') === 0) {
+      $effects_core = TRUE;
+      jquery_ui_add(array('effects.core'));
+    }
+  
+    // Load other files.
+    if (!isset($loaded_files[$file])) {
+      switch ($type) {
+        case 'none':
+          $file_path = "$file.js";
+          break;
+        case 'packed':
+          $file_path = "packed-javascript/$file.packed.js";
+          break;
+        case 'minified':
+        default:
+          $file_path = "minified-javascript/$file.min.js";
+          break;
+      }
+      $js_path = $jquery_ui_path . '/' . $file_path;
+      drupal_add_js($js_path);
+      $loaded_files[$file] = $js_path; // or TRUE...
+    }
+  }
+}
+
+/**
+ * Implementation of hook_menu().
+ */
+function jquery_ui_menu() {
+  $items['admin/settings/jquery_ui'] = array(
+    'title' => 'jQuery UI',
+    'description' => 'Configure settings for jQuery UI module.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('jquery_ui_admin_settings'),
+    'access arguments' => array('access site configuration'),
+  );
+
+  return $items;
+}
+
+/**
+ * Admin settings form.
+ */
+function jquery_ui_admin_settings() {
+  $form['jquery_ui_compression_type'] = array(
+    '#type' => 'radios',
+    '#title' => t('jQuery UI compression type'),
+    '#options' => drupal_map_assoc(array('packed', 'minified', 'none')),
+    '#default_value' => variable_get('jquery_ui_compression_type', 'minified'),
+    '#description' => t("Type of compression to use. 'Packed' uses Dean Edward's packer to make the file size as small as possible, but may require more browser processing. 'Minified' takes out all comments, whitespace, etc. to reduce the file size to a lesser degree, maintaining performance. 'None' leaves the full source intact."),
+  );
+
+  return system_settings_form($form);
+}
+
+/**
+ * Return the version of jQuery UI installed.
+ */
+function jquery_ui_get_version() {
+  $version = 0;
+
+  // Attempt to locate the jQuery UI directory and extract the version.
+  $module_directory = drupal_get_path('module', 'jquery_ui') . '/jquery.ui';
+  $files = file_scan_directory($module_directory, 'jquery\.ui-all-.*\.js$', $nomask = array('.', '..', 'CVS'), $callback = 0, $recurse = FALSE);
+  $file = array_shift($files);
+  if (preg_match('#jquery\.ui-all-(.+)$#', $file->name, $matches)) {
+    $version = $matches[1];
+  }
+
+  return $version;
+}
