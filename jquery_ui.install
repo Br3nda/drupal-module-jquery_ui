@@ -1,5 +1,5 @@
 <?php
-// $Id: jquery_ui.install,v 1.1 2008/05/21 05:14:51 webchick Exp $
+// $Id: jquery_ui.install,v 1.2 2008/05/27 17:34:44 webchick Exp $
 
 /**
  * @file
@@ -17,7 +17,7 @@ function jquery_ui_requirements($phase) {
   if ($phase == 'install') {
     // The jquery_ui_get_version() function is in the .module file, which isn't
     // loaded yet.
-    include_once base_path() . drupal_get_path('module', 'jquery_ui') . '/jquery_ui.module';
+    include_once drupal_get_path('module', 'jquery_ui') . '/jquery_ui.module';
   }
 
   $requirements['jquery_ui']['title'] = $t('jQuery UI');

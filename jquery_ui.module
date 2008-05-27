@@ -1,5 +1,5 @@
 <?php
-// $Id: jquery_ui.module,v 1.1 2008/05/21 05:14:51 webchick Exp $
+// $Id: jquery_ui.module,v 1.2 2008/05/27 17:34:44 webchick Exp $
 
 /**
  * @file
@@ -104,9 +104,11 @@ function jquery_ui_get_version() {
   // Attempt to locate the jQuery UI directory and extract the version.
   $module_directory = drupal_get_path('module', 'jquery_ui') . '/jquery.ui';
   $files = file_scan_directory($module_directory, 'jquery\.ui-all-.*\.js$', $nomask = array('.', '..', 'CVS'), $callback = 0, $recurse = FALSE);
-  $file = array_shift($files);
-  if (preg_match('#jquery\.ui-all-(.+)$#', $file->name, $matches)) {
-    $version = $matches[1];
+  if (!empty($files)) {
+    $file = array_shift($files);
+    if (preg_match('#jquery\.ui-all-(.+)$#', $file->name, $matches)) {
+      $version = $matches[1];
+    }
   }
 
   return $version;
