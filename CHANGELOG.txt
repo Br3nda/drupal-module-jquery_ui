@@ -1,0 +1,10 @@
+// $Id: CHANGELOG.txt,v 1.1.2.2 2008/05/29 04:16:51 sun Exp $
+
+jQuery UI x.x-x.x, xxxx-xx-xx
+-----------------------------
+
+
+jQuery UI 5.x-1.x, xxxx-xx-xx
+-----------------------------
+#263785 by sun: Initial port of jQuery UI for Drupal 5.x.
+

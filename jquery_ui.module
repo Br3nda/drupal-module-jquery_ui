@@ -1,5 +1,5 @@
 <?php
-// $Id: jquery_ui.module,v 1.2 2008/05/27 17:34:44 webchick Exp $
+// $Id: jquery_ui.module,v 1.2.2.1 2008/05/29 04:16:51 sun Exp $
 
 /**
  * @file
@@ -69,12 +69,14 @@ function jquery_ui_add($files = array(), $type = NULL) {
  * Implementation of hook_menu().
  */
 function jquery_ui_menu() {
-  $items['admin/settings/jquery_ui'] = array(
-    'title' => 'jQuery UI',
-    'description' => 'Configure settings for jQuery UI module.',
-    'page callback' => 'drupal_get_form',
-    'page arguments' => array('jquery_ui_admin_settings'),
-    'access arguments' => array('access site configuration'),
+  $items = array();
+  $items[] = array(
+    'path' => 'admin/settings/jquery_ui',
+    'title' => t('jQuery UI'),
+    'description' => t('Configure settings for jQuery UI module.'),
+    'callback' => 'drupal_get_form',
+    'callback arguments' => array('jquery_ui_admin_settings'),
+    'access' => array('access site configuration'),
   );
 
   return $items;
