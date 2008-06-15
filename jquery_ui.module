@@ -1,5 +1,5 @@
 <?php
-// $Id: jquery_ui.module,v 1.2 2008/05/27 17:34:44 webchick Exp $
+// $Id: jquery_ui.module,v 1.3 2008/06/15 05:15:11 webchick Exp $
 
 /**
  * @file
@@ -9,6 +9,11 @@
  * modules that implement the JQuery UI library. It ensures that multiple
  * modules will all include the same library script just once on any given page.
  */
+
+/**
+ * Path to jQuery UI library.
+ */
+define('JQUERY_UI_PATH', drupal_get_path('module', 'jquery_ui') . '/jquery.ui');
  
 /**
  * Add JQuery interface library to this page.
@@ -22,7 +27,7 @@
  */
 function jquery_ui_add($files = array(), $type = NULL) {
   static $loaded_files, $ui_core, $effects_core;
-  $jquery_ui_path = drupal_get_path('module', 'jquery_ui') . '/jquery.ui';
+  $jquery_ui_path = JQUERY_UI_PATH . '/ui';
 
   // If a type wasn't specified, then default to whatever was specified in the
   // settings page.
@@ -51,11 +56,11 @@ function jquery_ui_add($files = array(), $type = NULL) {
           $file_path = "$file.js";
           break;
         case 'packed':
-          $file_path = "packed-javascript/$file.packed.js";
+          $file_path = "packed/$file.packed.js";
           break;
         case 'minified':
         default:
-          $file_path = "minified-javascript/$file.min.js";
+          $file_path = "minified/$file.min.js";
           break;
       }
       $js_path = $jquery_ui_path . '/' . $file_path;
@@ -101,14 +106,8 @@ function jquery_ui_admin_settings() {
 function jquery_ui_get_version() {
   $version = 0;
 
-  // Attempt to locate the jQuery UI directory and extract the version.
-  $module_directory = drupal_get_path('module', 'jquery_ui') . '/jquery.ui';
-  $files = file_scan_directory($module_directory, 'jquery\.ui-all-.*\.js$', $nomask = array('.', '..', 'CVS'), $callback = 0, $recurse = FALSE);
-  if (!empty($files)) {
-    $file = array_shift($files);
-    if (preg_match('#jquery\.ui-all-(.+)$#', $file->name, $matches)) {
-      $version = $matches[1];
-    }
+  if (file_exists(JQUERY_UI_PATH . '/version.txt')) {
+    $version = file_get_contents(JQUERY_UI_PATH . '/version.txt');
   }
 
   return $version;
