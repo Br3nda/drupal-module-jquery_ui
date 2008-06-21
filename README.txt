@@ -1,4 +1,4 @@
-// $Id: README.txt,v 1.2 2008/06/15 05:15:11 webchick Exp $
+// $Id: README.txt,v 1.3 2008/06/21 22:58:43 webchick Exp $
 
 CONTENTS OF THIS FILE
 ---------------------
@@ -67,6 +67,8 @@ the following changes:
    For example:
 
      jquery_ui_add(array('ui.draggable', 'ui.droppable', 'ui.sortable'));
+     
+     jquery_ui_add('ui.sortable');  // For a single file
 
    See the contents of the jquery.ui-X.X sub-directory for a list of available
    files that may be included, and see http://ui.jquery.com/docs for details on

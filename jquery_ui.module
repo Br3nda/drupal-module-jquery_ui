@@ -1,5 +1,5 @@
 <?php
-// $Id: jquery_ui.module,v 1.3 2008/06/15 05:15:11 webchick Exp $
+// $Id: jquery_ui.module,v 1.4 2008/06/21 22:58:43 webchick Exp $
 
 /**
  * @file
@@ -16,11 +16,14 @@
 define('JQUERY_UI_PATH', drupal_get_path('module', 'jquery_ui') . '/jquery.ui');
  
 /**
- * Add JQuery interface library to this page.
+ * Add the specified jQuery UI library files to this page.
+ *
+ * The ui.core file is always included automatically, as well as the
+ * effects.core file if any of the effects libraries are used.
  *
  * @param $files
  *   An array of what additional files (other than UI core) should be loaded
- *   on the page.
+ *   on the page, or a string with a single file name.
  * @param $type
  *   Compression type: leave empty to use admin setting.
  *   Possible values: 'minified', 'packed', 'none'
@@ -28,6 +31,12 @@ define('JQUERY_UI_PATH', drupal_get_path('module', 'jquery_ui') . '/jquery.ui');
 function jquery_ui_add($files = array(), $type = NULL) {
   static $loaded_files, $ui_core, $effects_core;
   $jquery_ui_path = JQUERY_UI_PATH . '/ui';
+
+  // Convert file to an array if it's not one already, to compensate for
+  // lazy developers. ;)
+  if (!is_array($files)) {
+    $files = array($files);
+  }
 
   // If a type wasn't specified, then default to whatever was specified in the
   // settings page.
