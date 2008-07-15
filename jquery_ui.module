@@ -1,5 +1,5 @@
 <?php
-// $Id: jquery_ui.module,v 1.2.2.1 2008/05/29 04:16:51 sun Exp $
+// $Id: jquery_ui.module,v 1.2.2.2 2008/07/15 22:29:42 sun Exp $
 
 /**
  * @file
@@ -76,7 +76,7 @@ function jquery_ui_menu() {
     'description' => t('Configure settings for jQuery UI module.'),
     'callback' => 'drupal_get_form',
     'callback arguments' => array('jquery_ui_admin_settings'),
-    'access' => array('access site configuration'),
+    'access' => user_access('administer site configuration'),
   );
 
   return $items;
