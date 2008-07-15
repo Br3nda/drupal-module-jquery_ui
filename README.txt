@@ -1,4 +1,4 @@
-// $Id: README.txt,v 1.1 2008/05/21 05:14:51 webchick Exp $
+// $Id: README.txt,v 1.1.2.1 2008/07/15 23:32:28 sun Exp $
 
 CONTENTS OF THIS FILE
 ---------------------
@@ -15,6 +15,7 @@ Authors:
 * Jeff Robbins (jjeff)
 * Angela Byron (webchick)
 * Addison Berry (add1sun)
+* Daniel F. Kudwien (sun)
 
 This Module Made by Robots: http://www.lullabot.com
 
@@ -29,9 +30,11 @@ on its own.
 INSTALLATION
 ------------
 
-1. Copy the jquery_ui directory to your sites/SITENAME/modules directory.
+1. Copy the jquery_ui module directory to your sites/SITENAME/modules
+   directory.
 
-2. Download the full version of jQuery UI from http://ui.jquery.com/download.
+2. Download the "Development bundle" of jQuery UI from
+   http://ui.jquery.com/download.
 
 3. Extract it as a sub-directory called 'jquery.ui' in the jquery_ui folder:
 
@@ -53,7 +56,7 @@ the following changes:
 
 1. In your module's .info file, add the following line:
 
-     dependencies[] = jquery_ui
+     dependencies = jquery_ui
 
    This will force users to have the jQuery UI module installed before they can
    enable your module.
@@ -65,15 +68,11 @@ the following changes:
    For example:
 
      jquery_ui_add(array('ui.draggable', 'ui.droppable', 'ui.sortable'));
+     
+     jquery_ui_add('ui.sortable');  // For a single file
 
    See the contents of the jquery.ui-X.X sub-directory for a list of available
    files that may be included, and see http://ui.jquery.com/docs for details on
    how to use them. The required ui.core file is automatically included, as is
    effects.core if you include any effects files.
-
-   If you wish to override the compression type selected in the settings
-   screen, you may do so by passing in an optional $type parameter. Possible
-   values are 'none', 'minified', and 'packed'.
-
-     jquery_ui_add(array('ui.draggable', 'ui.droppable', 'ui.sortable'), 'none');
 

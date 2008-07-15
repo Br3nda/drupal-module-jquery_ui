@@ -1,4 +1,4 @@
-// $Id: CHANGELOG.txt,v 1.1.2.3 2008/07/15 22:29:42 sun Exp $
+// $Id: CHANGELOG.txt,v 1.1.2.4 2008/07/15 23:32:28 sun Exp $
 
 jQuery UI x.x-x.x, xxxx-xx-xx
 -----------------------------
@@ -6,6 +6,8 @@ jQuery UI x.x-x.x, xxxx-xx-xx
 
 jQuery UI 5.x-1.x, xxxx-xx-xx
 -----------------------------
+#268645 by sun: Fixed compatibility with jQuery UI 1.5 (stable).
 #277640 by sun: Fixed invalid access permission for module settings.
 #263785 by sun: Initial port of jQuery UI for Drupal 5.x.
+
 

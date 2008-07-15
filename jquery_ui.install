@@ -1,5 +1,5 @@
 <?php
-// $Id: jquery_ui.install,v 1.2 2008/05/27 17:34:44 webchick Exp $
+// $Id: jquery_ui.install,v 1.2.2.1 2008/07/15 23:32:28 sun Exp $
 
 /**
  * @file
@@ -29,10 +29,16 @@ function jquery_ui_requirements($phase) {
   else {
     // Required library wasn't found. Abort installation.
     $requirements['jquery_ui']['value'] = $t('Not found');
-    $requirements['jquery_ui']['description'] = $t('Missing jQuery UI plug-in. Please !download and extract it to your jquery_ui module directory. See README.txt for more info.', array('!download' => l(t('download jQuery UI'), 'http://ui.jquery.com/download')));
+    $requirements['jquery_ui']['description'] = $t('Missing jQuery UI plug-in. Please !download and extract it to your jquery_ui module directory. See README.txt for more info.', array('!download' => l(t('download the jQuery UI development bundle'), 'http://ui.jquery.com/download')));
     $requirements['jquery_ui']['severity'] = REQUIREMENT_ERROR;
   }
 
   return $requirements;
 }
 
+/**
+ * Implementation of hook_uninstall().
+ */
+function jquery_ui_uninstall() {
+  variable_del('jquery_ui_compression_type');
+}
