@@ -1,4 +1,4 @@
-// $Id: CHANGELOG.txt,v 1.1.2.5 2008/07/16 03:00:28 sun Exp $
+// $Id: CHANGELOG.txt,v 1.1.2.6 2008/08/01 15:06:36 sun Exp $
 
 jQuery UI x.x-x.x, xxxx-xx-xx
 -----------------------------
@@ -6,6 +6,7 @@ jQuery UI x.x-x.x, xxxx-xx-xx
 
 jQuery UI 5.x-1.x, xxxx-xx-xx
 -----------------------------
+#227687 by sun: Fixed improperly capitalized package name.
 
 
 jQuery UI 5.x-1.0, 2008-07-16
