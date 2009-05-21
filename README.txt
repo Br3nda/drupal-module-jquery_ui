@@ -1,4 +1,4 @@
-// $Id: README.txt,v 1.4 2008/06/23 23:45:01 webchick Exp $
+// $Id: README.txt,v 1.5 2009/05/21 22:03:30 robloach Exp $
 
 CONTENTS OF THIS FILE
 ---------------------
@@ -29,17 +29,37 @@ on its own.
 INSTALLATION
 ------------
 
-1. Copy the jquery_ui module directory to your sites/SITENAME/modules
-   directory.
+1. Copy the jquery_ui module directory to your sites/all/modules directory.
 
-2. Download the "Development bundle" of jQuery UI from
-   http://ui.jquery.com/download.
+2. Download the latest jQuery 1.6 development package from:
+
+     http://code.google.com/p/jquery-ui/downloads/list?can=3&q=1.6
 
 3. Extract it as a sub-directory called 'jquery.ui' in the jquery_ui folder:
 
      /sites/all/modules/jquery_ui/jquery.ui/
 
 4. Enable the module at Administer >> Site building >> Modules.
+
+
+JQUERY UI 1.7
+-------------
+
+The jQuery UI module uses jQuery UI 1.6 because jQuery UI 1.7 requires at least
+jQuery 1.3, which is not shipped with Drupal 6. If you absolutely need to move
+to jQuery UI 1.7, you can get around this by doing the following:
+
+1. Install the jQuery Update module appropriately from:
+
+     http://drupal.org/project/jquery_update
+
+2. Download the latest jQuery UI 1.7 development package from:
+
+     http://code.google.com/p/jquery-ui/downloads/list?can=3&q=1.7
+
+3. Replace the old jQuery UI folder with the 1.7 package at:
+
+     /sites/all/modules/jquery_ui/jquery.ui/
 
 
 API

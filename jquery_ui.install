@@ -1,5 +1,5 @@
 <?php
-// $Id: jquery_ui.install,v 1.4 2008/11/03 23:21:02 sun Exp $
+// $Id: jquery_ui.install,v 1.5 2009/05/21 22:03:30 robloach Exp $
 
 /**
  * @file
@@ -29,7 +29,9 @@ function jquery_ui_requirements($phase) {
   else {
     // Required library wasn't found. Abort installation.
     $requirements['jquery_ui']['value'] = $t('Not found');
-    $requirements['jquery_ui']['description'] = $t('Missing jQuery UI plug-in. Please !download and extract it to your jquery_ui module directory. See README.txt for more info.', array('!download' => l($t('download the jQuery UI development bundle'), 'http://ui.jquery.com/download')));
+    // Provide a download link to the jQuery UI development bundle. The provided
+    // link will list the latest 1.6.x build.
+    $requirements['jquery_ui']['description'] = $t('The <a href="@jqueryui">jQuery UI</a> plugin is missing. <a href="@download">Download</a> and extract it to your <em>jquery_ui</em> module directory. See <a href="@readme">README.txt</a> for more info.', array('@jqueryui' => 'http://jqueryui.com', '@download' => 'http://code.google.com/p/jquery-ui/downloads/list?can=3&q=1.6', '@readme' => url(drupal_get_path('module', 'jquery_ui') .'/README.txt')));
     $requirements['jquery_ui']['severity'] = REQUIREMENT_ERROR;
   }
 
