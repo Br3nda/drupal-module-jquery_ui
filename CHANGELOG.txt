@@ -1,6 +1,10 @@
-// $Id: CHANGELOG.txt,v 1.5 2009/05/21 22:03:30 robloach Exp $
+// $Id: CHANGELOG.txt,v 1.6 2009/05/25 22:26:50 robloach Exp $
 
 jQuery UI x.x-x.x, xxxx-xx-xx
+-----------------------------
+
+
+jQuery UI 7.x-1.x, xxxx-xx-xx
 -----------------------------
 
 
