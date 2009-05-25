@@ -1,5 +1,5 @@
-; $Id: jquery_ui.info,v 1.3 2009/05/21 22:03:30 robloach Exp $
+; $Id: jquery_ui.info,v 1.3.4.1 2009/05/25 22:11:19 robloach Exp $
 name = jQuery UI
 description = Provides the jQuery UI plug-in to other Drupal modules.
-package = User interface
-core = 6.x
+core = 7.x
+files[] = jquery_ui.module
