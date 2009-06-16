@@ -1,4 +1,4 @@
-// $Id: CHANGELOG.txt,v 1.6 2009/05/25 22:26:50 robloach Exp $
+// $Id: CHANGELOG.txt,v 1.7 2009/06/16 01:56:20 sun Exp $
 
 jQuery UI x.x-x.x, xxxx-xx-xx
 -----------------------------
@@ -10,7 +10,8 @@ jQuery UI 7.x-1.x, xxxx-xx-xx
 
 jQuery UI 6.x-1.x, xxxx-xx-xx
 -----------------------------
-#362509 by Rob Loach, Deciphered, sun and adrinux: New release system with jQuery UI 1.6.
+#362509 by Rob Loach, Deciphered, sun and adrinux: New release system with
+  jQuery UI 1.6.
 #322731 by sun: Fixed improper use of t() in module install file.
 #227687 by sun: Fixed improperly capitalized package name.
 
