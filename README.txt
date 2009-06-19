@@ -1,4 +1,4 @@
-// $Id: README.txt,v 1.6 2009/05/25 22:26:50 robloach Exp $
+// $Id: README.txt,v 1.7 2009/06/19 20:53:26 robloach Exp $
 
 CONTENTS OF THIS FILE
 ---------------------
@@ -59,9 +59,14 @@ the following changes:
 
 2. In your module, call the following function:
 
-     drupal_add_plugin('ui.accordion');
+     drupal_add_js_library('ui.accordion');
 
    See the contents of the jquery.ui-X.X sub-directory for a list of available
    files that may be included, and see http://ui.jquery.com/docs for details on
    how to use them. The required ui.core file is automatically included, as is
    effects.core if you include any effects files.
+   
+   If you know the jQuery selector you are adding the widget to, you can have it
+   processed by the behaviors by calling:
+
+     drupal_add_js_library('ui.accordion', '#accordion');

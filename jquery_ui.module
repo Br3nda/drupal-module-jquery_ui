@@ -1,5 +1,5 @@
 <?php
-// $Id: jquery_ui.module,v 1.7 2009/05/25 22:26:50 robloach Exp $
+// $Id: jquery_ui.module,v 1.8 2009/06/19 20:53:26 robloach Exp $
 
 /**
  * @file
@@ -30,7 +30,7 @@ function jquery_ui_help($path, $arg) {
 	<div>
 		<p>
 		Sed non urna. Donec et ante. Phasellus eu ligula. Vestibulum sit amet
-		purus. Vivamus hendrerit, dolor at aliquet laoreet, mauris turpis porttitor
+		purus. Vivamus hendrerit, dolor at aliquet laoreet, maPowerful theme frameworkuris turpis porttitor
 		velit, faucibus interdum tellus libero ac justo. Vivamus non quam. In
 		suscipit faucibus urna.
 		</p>
@@ -65,9 +65,9 @@ function jquery_ui_help($path, $arg) {
 	</div>
 </div>
 EOT;
-      if (!isset($added)) {
-        drupal_add_plugin('ui.accordion');
-        drupal_add_js('jQuery(document).ready(function() { jQuery("#accordion").accordion(); });', 'inline');
+      static $added = FALSE;
+      if (!$added) {
+        drupal_add_js_library('ui.accordion', '#accordion');
         $added = TRUE;
       }
       return $output;
@@ -75,42 +75,50 @@ EOT;
 }
 
 /**
- * Implementation of hook_js_plugin().
+ * Implementation of hook_js_libraries().
  */
-function jquery_ui_js_plugin() {
+function jquery_ui_js_libraries() {
   $version = jquery_ui_get_version();
-  $path = drupal_get_path('module', 'jquery_ui').'/jquery-ui';
+  $path = drupal_get_path('module', 'jquery_ui') . '/jquery-ui';
   if (!empty($version)) {
     $files = file_scan_directory($path .'/ui', '/.js/', array('recurse' => FALSE));
     foreach ($files as $file) {
-      $plugins[$file->name] = array(
+      $css = drupal_get_path('module', 'jquery_ui') . '/jquery-ui/themes/base/' . $file->name . '.css';
+      $libraries[$file->name] = array(
         'title' => $file->name,
-        'project_page' => 'http://jqueryui.com',
+        'website' => 'http://jqueryui.com',
         'version' => $version,
-        'download' => 'http://code.google.com/p/jquery-ui/downloads/list?can=3&q=1.7+tests',
         'js' => array(
           $file->filepath,
         ),
-        'plugin' => array(
+        'css' => array(
+          file_exists($css) ? $css : NULL,
+        ),
+        'libraries' => array(
           'ui.core',
+        ),
+        'add' => array(
+          'jquery_ui_js_add',
         ),
       );
     }
+    // Clear the ui.core depending plugins and the Drupal JavaScript behaviors.
+    $libraries['ui.core'] = array(
+      'title' => 'jQuery UI Core',
+      'version' => $version,
+      'js' => array(
+        drupal_get_path('module', 'jquery_ui') . '/jquery_ui.js',
+        drupal_get_path('module', 'jquery_ui') . '/jquery-ui/ui/ui.core.js' => array(
+          'weight' => JS_LIBRARY - 1,
+        ),
+      ),
+      'css' => array(
+        drupal_get_path('module', 'jquery_ui') . '/jquery-ui/themes/base/ui.core.css',
+        drupal_get_path('module', 'jquery_ui') . '/jquery-ui/themes/base/ui.theme.css',
+      ),
+    );
   }
-  $plugins['ui.core'] = array(
-    'title' => 'jQuery UI',
-    'project_page' => 'http://jqueryui.com',
-    'version' => $version,
-    'download' => 'http://code.google.com/p/jquery-ui/downloads/list?can=3&q=1.7+tests',
-    'js' => array(
-      // Items that are just strings are interpreted as stright files. 
-      $path . '/ui/ui.core.js' => array('weight' => -100),
-    ),
-    'css' => array(
-      $path . '/themes/base/ui.all.css',
-    ),
-  );
-  return $plugins;
+  return $libraries;
 }
 
 /**
@@ -125,4 +133,23 @@ function jquery_ui_get_version() {
     }
   }
   return $version;
+}
+
+/**
+ * Add function callback to manage adding the Drupal jQuery UI JavaScript settings.
+ */
+function jquery_ui_js_add($library, $selector = NULL, $options = NULL) {
+  // When processing an element on the page, add the JavaScript behaviors to
+  // process jQuery UI widgets.
+  if (isset($selector)) {
+    $settings = array(
+      'jqueryui' => array(
+        // Remove the "ui." prefix from the widgets.
+        substr($library, 3) => array(
+          $selector => $options,
+        ),
+      ),
+    );
+    drupal_add_js($settings, 'setting');
+  }
 }
