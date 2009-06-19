@@ -1,5 +1,5 @@
 <?php
-// $Id: jquery_ui.module,v 1.8 2009/06/19 20:53:26 robloach Exp $
+// $Id: jquery_ui.module,v 1.9 2009/06/19 22:01:06 robloach Exp $
 
 /**
  * @file
@@ -94,12 +94,8 @@ function jquery_ui_js_libraries() {
         'css' => array(
           file_exists($css) ? $css : NULL,
         ),
-        'libraries' => array(
-          'ui.core',
-        ),
-        'add' => array(
-          'jquery_ui_js_add',
-        ),
+        'dependencies' => array('ui.core'),
+        'add callbacks' => array('jquery_ui_js_add'),
       );
     }
     // Clear the ui.core depending plugins and the Drupal JavaScript behaviors.
@@ -107,7 +103,6 @@ function jquery_ui_js_libraries() {
       'title' => 'jQuery UI Core',
       'version' => $version,
       'js' => array(
-        drupal_get_path('module', 'jquery_ui') . '/jquery_ui.js',
         drupal_get_path('module', 'jquery_ui') . '/jquery-ui/ui/ui.core.js' => array(
           'weight' => JS_LIBRARY - 1,
         ),
@@ -142,6 +137,7 @@ function jquery_ui_js_add($library, $selector = NULL, $options = NULL) {
   // When processing an element on the page, add the JavaScript behaviors to
   // process jQuery UI widgets.
   if (isset($selector)) {
+    drupal_add_js(drupal_get_path('module', 'jquery_ui') . '/jquery_ui.js');
     $settings = array(
       'jqueryui' => array(
         // Remove the "ui." prefix from the widgets.
