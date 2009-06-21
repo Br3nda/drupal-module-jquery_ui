@@ -1,10 +1,14 @@
-// $Id: CHANGELOG.txt,v 1.1.2.8 2009/06/21 03:25:26 sun Exp $
+// $Id: CHANGELOG.txt,v 1.1.2.9 2009/06/21 03:43:14 sun Exp $
 
 jQuery UI x.x-x.x, xxxx-xx-xx
 -----------------------------
 
 
 jQuery UI 5.x-1.x, xxxx-xx-xx
+-----------------------------
+
+
+jQuery UI 5.x-1.1, 2009-06-21
 -----------------------------
 #325831 by quicksketch, James Andres, ksenzee: Fixed drupal_get_path() fails
   during Drupal installation.

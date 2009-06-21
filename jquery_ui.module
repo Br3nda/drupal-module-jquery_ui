@@ -1,5 +1,5 @@
 <?php
-// $Id: jquery_ui.module,v 1.2.2.4 2009/06/21 03:25:26 sun Exp $
+// $Id: jquery_ui.module,v 1.2.2.5 2009/06/21 03:43:14 sun Exp $
 
 /**
  * @file
@@ -12,7 +12,7 @@
 
 /**
  * Path to jQuery UI library.
- * 
+ *
  * During site installation, JQUERY_UI_PATH is the absolute path to the
  * jQuery UI library.  At all other times JQUERY_UI_PATH is relative, and
  * safe for use in URLs.
@@ -65,9 +65,11 @@ function jquery_ui_add($files = array()) {
         case 'none':
           $file_path = "$file.js";
           break;
+
         case 'packed':
           $file_path = "packed/$file.packed.js";
           break;
+
         case 'minified':
         default:
           $file_path = "minified/$file.min.js";
@@ -75,7 +77,7 @@ function jquery_ui_add($files = array()) {
       }
       $js_path = $jquery_ui_path . '/' . $file_path;
       drupal_add_js($js_path);
-      $loaded_files[$file] = $js_path; // or TRUE...
+      $loaded_files[$file] = $js_path;
     }
   }
 }
@@ -124,3 +126,4 @@ function jquery_ui_get_version() {
 
   return $version;
 }
+
