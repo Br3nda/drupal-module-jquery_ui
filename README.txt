@@ -1,4 +1,4 @@
-// $Id: README.txt,v 1.5.4.3 2009/06/16 02:05:07 sun Exp $
+// $Id: README.txt,v 1.5.4.4 2009/06/21 03:24:31 sun Exp $
 
 CONTENTS OF THIS FILE
 ---------------------
@@ -15,6 +15,7 @@ Authors:
 * Jeff Robbins (jjeff)
 * Angela Byron (webchick)
 * Addison Berry (add1sun)
+* Daniel F. Kudwien (sun)
 
 This Module Made by Robots: http://www.lullabot.com
 

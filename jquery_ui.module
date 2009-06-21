@@ -1,5 +1,5 @@
 <?php
-// $Id: jquery_ui.module,v 1.6.4.3 2009/06/16 02:05:07 sun Exp $
+// $Id: jquery_ui.module,v 1.6.4.4 2009/06/21 03:24:31 sun Exp $
 
 /**
  * @file
@@ -12,8 +12,17 @@
 
 /**
  * Path to jQuery UI library.
+ * 
+ * During site installation, JQUERY_UI_PATH is the absolute path to the
+ * jQuery UI library.  At all other times JQUERY_UI_PATH is relative, and
+ * safe for use in URLs.
  */
-define('JQUERY_UI_PATH', drupal_get_path('module', 'jquery_ui') . '/jquery.ui');
+if (defined('MAINTENANCE_MODE') && MAINTENANCE_MODE == 'install') {
+  define('JQUERY_UI_PATH', dirname(__FILE__) . '/jquery.ui');
+}
+else {
+  define('JQUERY_UI_PATH', drupal_get_path('module', 'jquery_ui') . '/jquery.ui');
+}
 
 /**
  * Add the specified jQuery UI library files to this page.
