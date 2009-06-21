@@ -1,4 +1,4 @@
-// $Id: README.txt,v 1.7 2009/06/19 20:53:26 robloach Exp $
+// $Id: README.txt,v 1.8 2009/06/21 03:42:43 sun Exp $
 
 CONTENTS OF THIS FILE
 ---------------------
@@ -12,11 +12,7 @@ INTRODUCTION
 ------------
 
 Authors:
-* Jeff Robbins (jjeff)
-* Angela Byron (webchick)
-* Addison Berry (add1sun)
-
-This Module Made by Robots: http://www.lullabot.com
+* Rob Loach (Rob Loach)
 
 jQuery UI (http://ui.jquery.com/) is a set of cool widgets and effects that
 developers can use to add some pizazz to their modules.
