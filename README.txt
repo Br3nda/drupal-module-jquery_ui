@@ -1,4 +1,4 @@
-// $Id: README.txt,v 1.1.2.1 2008/07/15 23:32:28 sun Exp $
+// $Id: README.txt,v 1.1.2.2 2009/06/21 03:25:26 sun Exp $
 
 CONTENTS OF THIS FILE
 ---------------------
@@ -30,11 +30,11 @@ on its own.
 INSTALLATION
 ------------
 
-1. Copy the jquery_ui module directory to your sites/SITENAME/modules
-   directory.
+1. Copy the jquery_ui module directory to your sites/all/modules directory.
 
-2. Download the "Development bundle" of jQuery UI from
-   http://ui.jquery.com/download.
+2. Download the latest jQuery 1.6 development package from:
+
+     http://code.google.com/p/jquery-ui/downloads/list?can=3&q=1.6
 
 3. Extract it as a sub-directory called 'jquery.ui' in the jquery_ui folder:
 
