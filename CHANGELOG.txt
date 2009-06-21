@@ -1,4 +1,4 @@
-// $Id: CHANGELOG.txt,v 1.8 2009/06/16 02:04:33 sun Exp $
+// $Id: CHANGELOG.txt,v 1.9 2009/06/21 01:34:29 sun Exp $
 
 jQuery UI x.x-x.x, xxxx-xx-xx
 -----------------------------
@@ -6,6 +6,7 @@ jQuery UI x.x-x.x, xxxx-xx-xx
 
 jQuery UI 7.x-2.x, xxxx-xx-xx
 -----------------------------
+#434960 by sun: Added package information.
 
 
 jQuery UI 6.x-1.x, xxxx-xx-xx
