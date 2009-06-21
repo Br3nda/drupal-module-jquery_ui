@@ -1,4 +1,4 @@
-// $Id: README.txt,v 1.7 2009/06/19 20:53:26 robloach Exp $
+// $Id: README.txt,v 1.5.2.1 2009/06/21 03:24:56 sun Exp $
 
 CONTENTS OF THIS FILE
 ---------------------
@@ -15,6 +15,7 @@ Authors:
 * Jeff Robbins (jjeff)
 * Angela Byron (webchick)
 * Addison Berry (add1sun)
+* Daniel F. Kudwien (sun)
 
 This Module Made by Robots: http://www.lullabot.com
 
@@ -29,19 +30,37 @@ on its own.
 INSTALLATION
 ------------
 
-1. Apply the patch from http://drupal.org/node/315100 .
+1. Copy the jquery_ui module directory to your sites/all/modules directory.
 
-2. Copy the jquery_ui module directory to your sites/all/modules directory.
+2. Download the latest jQuery 1.6 development package from:
 
-3. Download the latest jQuery 1.7 development package from:
+     http://code.google.com/p/jquery-ui/downloads/list?can=3&q=1.6
+
+3. Extract it as a sub-directory called 'jquery.ui' in the jquery_ui folder:
+
+     /sites/all/modules/jquery_ui/jquery.ui/
+
+4. Enable the module at Administer >> Site building >> Modules.
+
+
+JQUERY UI 1.7
+-------------
+
+The jQuery UI module uses jQuery UI 1.6 because jQuery UI 1.7 requires at least
+jQuery 1.3, which is not shipped with Drupal 6. If you absolutely need to move
+to jQuery UI 1.7, you can get around this by doing the following:
+
+1. Install the jQuery Update module appropriately from:
+
+     http://drupal.org/project/jquery_update
+
+2. Download the latest jQuery UI 1.7 development package from:
 
      http://code.google.com/p/jquery-ui/downloads/list?can=3&q=1.7
 
-4. Extract it as a sub-directory called 'jquery-ui' in the jquery_ui folder:
+3. Replace the old jQuery UI folder with the 1.7 package at:
 
-     /sites/all/modules/jquery_ui/jquery-ui/
-
-5. Enable the module at Administer >> Site building >> Modules.
+     /sites/all/modules/jquery_ui/jquery.ui/
 
 
 API
@@ -59,14 +78,16 @@ the following changes:
 
 2. In your module, call the following function:
 
-     drupal_add_js_library('ui.accordion');
+     jquery_ui_add($files);
+
+   For example:
+
+     jquery_ui_add(array('ui.draggable', 'ui.droppable', 'ui.sortable'));
+     
+     jquery_ui_add('ui.sortable');  // For a single file
 
    See the contents of the jquery.ui-X.X sub-directory for a list of available
    files that may be included, and see http://ui.jquery.com/docs for details on
    how to use them. The required ui.core file is automatically included, as is
    effects.core if you include any effects files.
-   
-   If you know the jQuery selector you are adding the widget to, you can have it
-   processed by the behaviors by calling:
 
-     drupal_add_js_library('ui.accordion', '#accordion');

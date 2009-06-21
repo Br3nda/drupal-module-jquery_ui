@@ -1,16 +1,13 @@
-// $Id: CHANGELOG.txt,v 1.9 2009/06/21 01:34:29 sun Exp $
+// $Id: CHANGELOG.txt,v 1.5.2.1 2009/06/21 03:24:56 sun Exp $
 
 jQuery UI x.x-x.x, xxxx-xx-xx
 -----------------------------
 
 
-jQuery UI 7.x-2.x, xxxx-xx-xx
------------------------------
-#434960 by sun: Added package information.
-
-
 jQuery UI 6.x-1.x, xxxx-xx-xx
 -----------------------------
+#325831 by quicksketch, James Andres, ksenzee: Fixed drupal_get_path() fails
+  during Drupal installation.
 #362509 by Rob Loach, Deciphered, sun, and adrinux: New release system with
   jQuery UI 1.6.
 #322731 by sun: Fixed improper use of t() in module install file.
