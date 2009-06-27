@@ -1,5 +1,5 @@
 <?php
-// $Id: jquery_ui.module,v 1.6.4.5 2009/06/21 03:42:54 sun Exp $
+// $Id: jquery_ui.module,v 1.6.4.6 2009/06/27 18:12:30 sun Exp $
 
 /**
  * @file
@@ -35,7 +35,7 @@ else {
  *   on the page, or a string with a single file name.
  */
 function jquery_ui_add($files = array()) {
-  static $loaded_files, $ui_core, $effects_core;
+  static $loaded_files, $ui_core, $effects_core, $weight;
   $jquery_ui_path = JQUERY_UI_PATH . '/ui';
   $compression = variable_get('jquery_update_compression_type', 'mini');
 
@@ -43,6 +43,10 @@ function jquery_ui_add($files = array()) {
   // lazy developers. ;)
   if (!is_array($files)) {
     $files = array($files);
+  }
+
+  if (!isset($weight)) {
+    $weight = JS_LIBRARY + 5;
   }
 
   // If core hasn't been added yet, add it.
@@ -76,7 +80,7 @@ function jquery_ui_add($files = array()) {
           break;
       }
       $js_path = $jquery_ui_path . '/' . $file_path;
-      drupal_add_js($js_path);
+      drupal_add_js($js_path, array('weight' => $weight++));
       $loaded_files[$file] = $js_path;
     }
   }

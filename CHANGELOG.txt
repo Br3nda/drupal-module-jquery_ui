@@ -1,4 +1,4 @@
-// $Id: CHANGELOG.txt,v 1.5.4.5 2009/06/21 03:24:31 sun Exp $
+// $Id: CHANGELOG.txt,v 1.5.4.6 2009/06/27 18:12:30 sun Exp $
 
 jQuery UI x.x-x.x, xxxx-xx-xx
 -----------------------------
@@ -6,6 +6,7 @@ jQuery UI x.x-x.x, xxxx-xx-xx
 
 jQuery UI 7.x-1.x, xxxx-xx-xx
 -----------------------------
+#503848 by Gábor Hojtsy: Added default weight of JS_LIBRARY for JavaScripts.
 #325831 by quicksketch, James Andres, ksenzee: Fixed drupal_get_path() fails
   during Drupal installation.
 #357780 by Gábor Hojtsy: Ported to 7.x.
