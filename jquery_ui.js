@@ -1,4 +1,5 @@
-// $Id: jquery_ui.js,v 1.1 2009/06/19 20:53:26 robloach Exp $
+// $Id: jquery_ui.js,v 1.2 2009/06/29 00:09:27 sun Exp $
+
 (function ($) {
 
 /**

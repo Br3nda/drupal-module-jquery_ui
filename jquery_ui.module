@@ -1,11 +1,11 @@
 <?php
-// $Id: jquery_ui.module,v 1.9 2009/06/19 22:01:06 robloach Exp $
+// $Id: jquery_ui.module,v 1.10 2009/06/29 00:09:27 sun Exp $
 
 /**
  * @file
  * Provides the jQuery UI plug-in to other Drupal modules.
  *
- * Requires http://drupal.org/node/315100 .
+ * @see http://drupal.org/node/315100
  */
 
 /**
@@ -15,6 +15,9 @@ function jquery_ui_help($path, $arg) {
   switch ($path) {
     case 'admin/help#jquery_ui':
       $output = '<p>' . t('jQuery UI provides abstractions for low-level interaction and animation, advanced effects and high-level, themeable widgets, built on top of the jQuery JavaScript Library, that you can use to build highly interactive web applications.') . '</p>';
+
+      drupal_add_library('system', 'ui.accordion', '#accordion');
+      drupal_add_library('system', 'ui.accordion', '#block-system-management ul.menu');
       $output .= <<<EOT
 <div id="accordion">
 	<h3><a href="#">Section 1</a></h3>
@@ -65,83 +68,39 @@ function jquery_ui_help($path, $arg) {
 	</div>
 </div>
 EOT;
-      static $added = FALSE;
-      if (!$added) {
-        drupal_add_js_library('ui.accordion', '#accordion');
-        $added = TRUE;
-      }
       return $output;
   }
 }
 
 /**
- * Implementation of hook_js_libraries().
+ * Implementation of hook_library().
  */
-function jquery_ui_js_libraries() {
-  $version = jquery_ui_get_version();
-  $path = drupal_get_path('module', 'jquery_ui') . '/jquery-ui';
-  if (!empty($version)) {
-    $files = file_scan_directory($path .'/ui', '/.js/', array('recurse' => FALSE));
-    foreach ($files as $file) {
-      $css = drupal_get_path('module', 'jquery_ui') . '/jquery-ui/themes/base/' . $file->name . '.css';
-      $libraries[$file->name] = array(
-        'title' => $file->name,
-        'website' => 'http://jqueryui.com',
-        'version' => $version,
-        'js' => array(
-          $file->filepath,
-        ),
-        'css' => array(
-          file_exists($css) ? $css : NULL,
-        ),
-        'dependencies' => array('ui.core'),
-        'add callbacks' => array('jquery_ui_js_add'),
-      );
-    }
-    // Clear the ui.core depending plugins and the Drupal JavaScript behaviors.
-    $libraries['ui.core'] = array(
-      'title' => 'jQuery UI Core',
-      'version' => $version,
-      'js' => array(
-        drupal_get_path('module', 'jquery_ui') . '/jquery-ui/ui/ui.core.js' => array(
-          'weight' => JS_LIBRARY - 1,
-        ),
-      ),
-      'css' => array(
-        drupal_get_path('module', 'jquery_ui') . '/jquery-ui/themes/base/ui.core.css',
-        drupal_get_path('module', 'jquery_ui') . '/jquery-ui/themes/base/ui.theme.css',
-      ),
-    );
-  }
-  return $libraries;
-}
-
-/**
- * Gets the current jQuery UI version.
- */
-function jquery_ui_get_version() {
-  static $version = NULL;
-  if (!isset($version)) {
-    $path = drupal_get_path('module', 'jquery_ui') .'/jquery-ui/version.txt';
-    if (file_exists($path)) {
-      $version = file_get_contents($path);
+function jquery_ui_library_alter(&$libraries) {
+  foreach ($libraries['system'] as $library => $info) {
+    if (strpos($library, 'ui') === 0) {
+      $libraries['system'][$library]['add callbacks'][] = 'jquery_ui_library_add_ui';
     }
   }
-  return $version;
 }
 
 /**
  * Add function callback to manage adding the Drupal jQuery UI JavaScript settings.
  */
-function jquery_ui_js_add($library, $selector = NULL, $options = NULL) {
+function jquery_ui_library_add_ui($module, $library, $selector = NULL, $options = NULL) {
+  static $added;
+
   // When processing an element on the page, add the JavaScript behaviors to
   // process jQuery UI widgets.
-  if (isset($selector)) {
-    drupal_add_js(drupal_get_path('module', 'jquery_ui') . '/jquery_ui.js');
+  $library = substr($library, 3);
+  if (!empty($library) && isset($selector)) {
+    if (!isset($added)) {
+      drupal_add_js(drupal_get_path('module', 'jquery_ui') . '/jquery_ui.js');
+      $added = TRUE;
+    }
     $settings = array(
       'jqueryui' => array(
         // Remove the "ui." prefix from the widgets.
-        substr($library, 3) => array(
+        $library => array(
           $selector => $options,
         ),
       ),
