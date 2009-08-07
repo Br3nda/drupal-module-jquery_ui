@@ -1,4 +1,4 @@
-// $Id: README.txt,v 1.5.2.2 2009/06/21 03:43:03 sun Exp $
+// $Id: README.txt,v 1.5.2.3 2009/08/07 17:03:24 sun Exp $
 
 -- SUMMARY --
 
@@ -25,13 +25,17 @@ To submit bug reports and feature suggestions, or to track changes:
 
 * Copy the jquery_ui module directory to your sites/all/modules directory.
 
-* Download the latest jQuery UI 1.6 development package from:
+* Download the latest jQuery UI 1.6 release from:
 
     http://code.google.com/p/jquery-ui/downloads/list?can=3&q=1.6
 
 * Extract it as a sub-directory called 'jquery.ui' in the jquery_ui folder:
 
     /sites/all/modules/jquery_ui/jquery.ui/
+
+  so the actual jQuery UI JavaScript files are located in:
+
+    /sites/all/modules/jquery_ui/jquery.ui/ui/*.js
 
 * Enable the module at Administer >> Site building >> Modules.
 
@@ -46,13 +50,17 @@ to jQuery UI 1.7, you can get around this by doing the following:
 
     http://drupal.org/project/jquery_update
 
-* Download the latest jQuery UI 1.7 development package from:
+* Download the latest jQuery UI 1.7 release from:
 
     http://code.google.com/p/jquery-ui/downloads/list?can=3&q=1.7
 
 * Replace the old jQuery UI folder with the 1.7 package at:
 
     /sites/all/modules/jquery_ui/jquery.ui/
+
+  so the actual jQuery UI JavaScript files are located in:
+
+    /sites/all/modules/jquery_ui/jquery.ui/ui/*.js
 
 
 -- API --
