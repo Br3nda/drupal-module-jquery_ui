@@ -1,4 +1,4 @@
-// $Id: CHANGELOG.txt,v 1.1.2.9 2009/06/21 03:43:14 sun Exp $
+// $Id: CHANGELOG.txt,v 1.1.2.10 2009/08/07 17:03:28 sun Exp $
 
 jQuery UI x.x-x.x, xxxx-xx-xx
 -----------------------------
@@ -6,6 +6,7 @@ jQuery UI x.x-x.x, xxxx-xx-xx
 
 jQuery UI 5.x-1.x, xxxx-xx-xx
 -----------------------------
+#542908 by sun: Clarified installation instructions.
 
 
 jQuery UI 5.x-1.1, 2009-06-21
