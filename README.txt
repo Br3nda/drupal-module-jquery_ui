@@ -1,4 +1,4 @@
-// $Id: README.txt,v 1.5.4.6 2009/08/07 17:03:15 sun Exp $
+// $Id: README.txt,v 1.5.4.7 2010/04/02 13:58:00 sun Exp $
 
 -- SUMMARY --
 
@@ -25,9 +25,9 @@ To submit bug reports and feature suggestions, or to track changes:
 
 * Copy the jquery_ui module directory to your sites/all/modules directory.
 
-* Download the latest jQuery UI 1.7 release from:
+* Download the jQuery UI 1.7 release from:
 
-    http://code.google.com/p/jquery-ui/downloads/list?can=3&q=1.7
+    http://code.google.com/p/jquery-ui/downloads/list?q=1.7
 
 * Extract it as a sub-directory called 'jquery.ui' in the jquery_ui folder:
 
