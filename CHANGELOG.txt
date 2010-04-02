@@ -1,4 +1,4 @@
-// $Id: CHANGELOG.txt,v 1.12 2009/08/01 12:56:34 sun Exp $
+// $Id: CHANGELOG.txt,v 1.13 2010/04/02 13:57:56 sun Exp $
 
 jQuery UI x.x-x.x, xxxx-xx-xx
 -----------------------------
@@ -6,6 +6,7 @@ jQuery UI x.x-x.x, xxxx-xx-xx
 
 jQuery UI 7.x-2.x, xxxx-xx-xx
 -----------------------------
+#758910 by fp, sun: Fixed jQuery UI download link.
 #537052 by sun: Updated for hook_library_alter().
 by sun: Updated for #315100.
 #434960 by sun: Added package information.

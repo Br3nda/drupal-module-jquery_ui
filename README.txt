@@ -1,4 +1,4 @@
-// $Id: README.txt,v 1.8 2009/06/21 03:42:43 sun Exp $
+// $Id: README.txt,v 1.9 2010/04/02 13:57:56 sun Exp $
 
 CONTENTS OF THIS FILE
 ---------------------
@@ -29,9 +29,9 @@ INSTALLATION
 
 2. Copy the jquery_ui module directory to your sites/all/modules directory.
 
-3. Download the latest jQuery 1.7 development package from:
+3. Download the jQuery 1.7 development package from:
 
-     http://code.google.com/p/jquery-ui/downloads/list?can=3&q=1.7
+     http://code.google.com/p/jquery-ui/downloads/list?q=1.7
 
 4. Extract it as a sub-directory called 'jquery-ui' in the jquery_ui folder:
 
