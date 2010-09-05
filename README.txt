@@ -1,4 +1,4 @@
-// $Id: README.txt,v 1.5.2.4 2010/04/02 13:58:05 sun Exp $
+// $Id: README.txt,v 1.5.2.5 2010/09/05 02:34:26 sun Exp $
 
 -- SUMMARY --
 
@@ -52,7 +52,7 @@ to jQuery UI 1.7, you can get around this by doing the following:
 
 * Download the latest jQuery UI 1.7 release from:
 
-    http://code.google.com/p/jquery-ui/downloads/list?can=3&q=1.7
+    http://code.google.com/p/jquery-ui/downloads/list?q=1.7
 
 * Replace the old jQuery UI folder with the 1.7 package at:
 

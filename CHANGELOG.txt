@@ -1,4 +1,4 @@
-// $Id: CHANGELOG.txt,v 1.5.2.5 2010/04/02 14:19:54 sun Exp $
+// $Id: CHANGELOG.txt,v 1.5.2.6 2010/09/05 02:34:26 sun Exp $
 
 jQuery UI x.x-x.x, xxxx-xx-xx
 -----------------------------
@@ -6,6 +6,7 @@ jQuery UI x.x-x.x, xxxx-xx-xx
 
 jQuery UI 6.x-1.x, xxxx-xx-xx
 -----------------------------
+#879446 by Jolidog, Itangalo, webchick: Updated link for jQuery 1.6.
 #325831 by hanoii: Fixed drupal_get_path() in hook_requirements() breaks install
   profiles.
 #758910 by fp, sun: Fixed jQuery UI download link.
