@@ -1,4 +1,4 @@
-// $Id: CHANGELOG.txt,v 1.13 2010/04/02 13:57:56 sun Exp $
+// $Id: CHANGELOG.txt,v 1.14 2010/09/09 03:04:24 sun Exp $
 
 jQuery UI x.x-x.x, xxxx-xx-xx
 -----------------------------
@@ -6,6 +6,7 @@ jQuery UI x.x-x.x, xxxx-xx-xx
 
 jQuery UI 7.x-2.x, xxxx-xx-xx
 -----------------------------
+#559582 by sun, drupal-id.com: Fixed installation instructions.
 #758910 by fp, sun: Fixed jQuery UI download link.
 #537052 by sun: Updated for hook_library_alter().
 by sun: Updated for #315100.

@@ -1,4 +1,4 @@
-// $Id: README.txt,v 1.9 2010/04/02 13:57:56 sun Exp $
+// $Id: README.txt,v 1.10 2010/09/09 03:04:24 sun Exp $
 
 CONTENTS OF THIS FILE
 ---------------------
@@ -21,48 +21,66 @@ This module is more-or-less a utility module that should simply be required by
 other modules that depend on jQuery UI being available. It doesn't do anything
 on its own.
 
+For a full description of the module, visit the project page:
+  http://drupal.org/project/jquery_ui
 
-INSTALLATION
-------------
-
-1. Apply the patch from http://drupal.org/node/315100 .
-
-2. Copy the jquery_ui module directory to your sites/all/modules directory.
-
-3. Download the jQuery 1.7 development package from:
-
-     http://code.google.com/p/jquery-ui/downloads/list?q=1.7
-
-4. Extract it as a sub-directory called 'jquery-ui' in the jquery_ui folder:
-
-     /sites/all/modules/jquery_ui/jquery-ui/
-
-5. Enable the module at Administer >> Site building >> Modules.
+To submit bug reports and feature suggestions, or to track changes:
+  http://drupal.org/project/issues/jquery_ui
 
 
-API
----
+-- INSTALLATION --
+
+
+* Apply the patch from http://drupal.org/node/315100
+
+* Copy the jquery_ui module directory to your sites/all/modules directory, so it
+  is located in sites/all/modules/jquery_ui/.
+
+* Download the latest jQuery UI 1.7 release from:
+
+    http://code.google.com/p/jquery-ui/downloads/list?q=1.7
+
+* Put the downloaded archive into the module directory:
+
+    /sites/all/modules/jquery_ui/jquery.ui-1.7.zip
+
+* Extract the archive.  This will create the following sub-directory:
+
+    /sites/all/modules/jquery_ui/jquery.ui-1.7/
+
+* Rename the sub-directory into "jquery.ui" within the jquery_ui module folder:
+
+    /sites/all/modules/jquery_ui/jquery.ui/
+
+  so the actual jQuery UI JavaScript files are located in:
+
+    /sites/all/modules/jquery_ui/jquery.ui/ui/*.js
+
+* Enable the module at Administer >> Site building >> Modules.
+
+
+-- API --
 
 Developers who wish to use jQuery UI effects in their modules need only make
 the following changes:
 
-1. In your module's .info file, add the following line:
+* In your module's .info file, add the following line:
 
-     dependencies[] = jquery_ui
+    dependencies[] = jquery_ui
 
-   This will force users to have the jQuery UI module installed before they can
-   enable your module.
+  This will force users to have the jQuery UI module installed before they can
+  enable your module.
 
-2. In your module, call the following function:
+* In your module, call the following function:
 
-     drupal_add_js_library('ui.accordion');
+    jquery_ui_add($files);
 
-   See the contents of the jquery.ui-X.X sub-directory for a list of available
-   files that may be included, and see http://ui.jquery.com/docs for details on
-   how to use them. The required ui.core file is automatically included, as is
-   effects.core if you include any effects files.
-   
-   If you know the jQuery selector you are adding the widget to, you can have it
-   processed by the behaviors by calling:
+  See the contents of the jquery.ui-X.X sub-directory for a list of available
+  files that may be included, and see http://ui.jquery.com/docs for details on
+  how to use them. The required ui.core file is automatically included, as is
+  effects.core if you include any effects files.
 
-     drupal_add_js_library('ui.accordion', '#accordion');
+  If you know the jQuery selector you are adding the widget to, you can have it
+  processed by the behaviors by calling:
+
+    drupal_add_js_library('ui.accordion', '#accordion');
