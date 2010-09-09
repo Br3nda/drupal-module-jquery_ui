@@ -1,4 +1,4 @@
-// $Id: README.txt,v 1.1.2.5 2010/04/02 13:58:09 sun Exp $
+// $Id: README.txt,v 1.1.2.6 2010/09/09 03:04:38 sun Exp $
 
 -- SUMMARY --
 
@@ -23,13 +23,22 @@ To submit bug reports and feature suggestions, or to track changes:
 
 -- INSTALLATION --
 
-* Copy the jquery_ui module directory to your sites/all/modules directory.
+* Copy the jquery_ui module directory to your sites/all/modules directory, so it
+  is located in sites/all/modules/jquery_ui/.
 
 * Download the jQuery UI 1.6 release from:
 
     http://code.google.com/p/jquery-ui/downloads/list?q=1.6
 
-* Extract it as a sub-directory called 'jquery.ui' in the jquery_ui folder:
+* Put the downloaded archive into the module directory:
+
+    /sites/all/modules/jquery_ui/jquery.ui-1.6.zip
+
+* Extract the archive.  This will create the following sub-directory:
+
+    /sites/all/modules/jquery_ui/jquery.ui-1.6/
+
+* Rename the sub-directory into "jquery.ui" within the jquery_ui module folder:
 
     /sites/all/modules/jquery_ui/jquery.ui/
 
